@@ -6,7 +6,10 @@ namespace Assignment1
     {
         static void Main(string[] args)
         {
-            while (true) {
+            int choice=0;
+            while (choice != 11)
+            {
+
                 Console.WriteLine("1.Display Hello Message");
                 Console.WriteLine("2.Display Result of Addition ,Subtraction ,Product,Quotient of two nos.");
                 Console.WriteLine("3.Display Result of Addition ,Subtraction ,Product,Quotient of two nos.depending upon choice");
@@ -17,39 +20,124 @@ namespace Assignment1
                 Console.WriteLine("8.Display numbers from 100 to 5 with a gap of 3");
                 Console.WriteLine("9.Declare some int variables ,assign values and display in one line");
                 Console.WriteLine("10.Declare some int variables ,assign values and display in separate line");
-                Console.WriteLine("enter your choice: ");
-                string choice = Console.ReadLine();
+                Console.WriteLine("11 Exit");
+                Console.Write("Enter your choice: ");
+                choice = Convert.ToInt16(Console.ReadLine());
                 switch (choice)
                 {
-                    case "1":
-                        DisplayMsg();
+                    case 1:
+                        Console.WriteLine("hello!!");
                         break;
-                    case "2":
-                        PerformArithmetic();
+                    case 2:
+                        int n1, n2;
+                        Console.WriteLine("enter two nos.");
+                        n1 = Convert.ToByte(Console.ReadLine());
+                        n2 = Convert.ToByte(Console.ReadLine());
+                        Console.WriteLine("addition" + (n1 + n2));
+                        Console.WriteLine("subtraction" + (n1 - n2));
+                        Console.WriteLine("Product" + (n1 * n2));
+                        Console.WriteLine("Quotient" + (n1 / n2));
+                        Console.WriteLine("Remainder" + (n1 % n2));
                         break;
-                    case "3":
-                        PerformChoiceArithmetic();
+                    case 3:
+                        int x, y;
+                        Console.WriteLine("enter two nos.");
+                        x = Convert.ToInt16(Console.ReadLine());
+                        y = Convert.ToInt16(Console.ReadLine());
+                        Console.WriteLine("enter operations (+,-,*,/,%: ");
+                        char op = Convert.ToChar(Console.ReadLine());
+                        switch (op)
+                        {
+                            case '+':
+                                Console.WriteLine("add" + (x + y));
+                                break;
+                            case '-':
+                                Console.WriteLine("sub" + (x - y));
+                                break;
+                            case '*':
+                                Console.WriteLine("pro" + (x * y));
+                                break;
+                            case '/':
+                                Console.WriteLine("div" + (x / y));
+                                break;
+                            case '%':
+                                Console.WriteLine("rem" + (x % y));
+                                break;
+                            default:
+                                Console.WriteLine("Invalid Choice");
+                                break;
+                        }
                         break;
-                    case "4":
-                        DisplayName();
+
+                    case 4:
+                        for (int i = 1; i <= 10; i++)
+                            Console.WriteLine("my name is Shruti");
                         break;
-                    case "5":
-                        DisplayNametenTimes();
+                    case 5:
+                        int n;
+                        n = Convert.ToInt16(Console.ReadLine());
+                        for (int i = 0; i <= n; i += 2)
+                            Console.WriteLine(i);
+                        int j = 0;
+                        while (j <= n)
+                        {
+                            Console.WriteLine(j);
+                            j += 2;
+                        }
+                        int k = 0;
+                        do
+                        {
+                            Console.WriteLine(k);
+                            k += 2;
+                        } while (k <= n);
+
                         break;
-                    case "6":
-                        EvenNos();
+                    case 6:
+
+                        int num = Convert.ToInt16(Console.ReadLine());
+                        for (int i = 1; i <= num; i += 2)
+                            Console.WriteLine(i);
+                        j = 1;
+                        while (j <= num)
+                        {
+                            Console.WriteLine(j);
+                            j += 2;
+                        }
+                        k = 1;
+                        do
+                        {
+                            Console.WriteLine(k);
+                            k += 2;
+                        } while (k <= num);
+
                         break;
-                    case "7":
-                        OddNos();
+                    case 7:
+                        int a= Convert.ToInt32(Console.ReadLine());
+                        for (int i = 1; i <= 10; i++)
+                            Console.WriteLine(a + "*" + i + "=" + (a * i));
                         break;
-                    case "8":
-                        DisplayGap();
+                    case 8:
+                        int p = 100;
+                        while (p >= 5)
+                        {
+                            Console.WriteLine(p + " ");
+                            p -= 3;
+                        }
                         break;
-                    case "9":
-                        DisplayOneLine();
+                    case 9:
+                        int x1 = 4;
+                        int y1 = 5;
+                        Console.Write(x1);
+                        Console.Write(y1);
                         break;
-                    case "10":
-                        DisplaySeparateLine();
+                    case 10:
+                        int x2 = 4;
+                       int y2 = 5;
+                        Console.WriteLine(x2);
+                        Console.WriteLine(y2);
+                        break;
+                    case 11:
+                        Console.WriteLine("Exit");
                         break;
                     default:
                         Console.WriteLine("Invalid Choice");
@@ -57,128 +145,8 @@ namespace Assignment1
                 }
             }
         }
-        static void DisplayMsg() {
-            Console.WriteLine("Hello World");
-        }
-        static void PerformArithmetic() {
-            Console.WriteLine("enter first num");
-            double n1 = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("enter second num");
-            double n2 = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine($"Add:{n1 + n2}");
-            Console.WriteLine($"Sub:{n1 - n2}");
-            Console.WriteLine($"Pro: {n1 * n2}");
-            Console.WriteLine($"Quo: {n1 / n2}");
-            Console.WriteLine($"Rem: {n1 % n2}");
-        }
-        static void PerformChoiceArithmetic() {
-            Console.WriteLine("choose operation");
-            Console.WriteLine("enter first num");
-            double num1 = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("enter second num");
-            double num2 = Convert.ToDouble(Console.ReadLine());
-            Console.WriteLine("1.Add");
-            Console.WriteLine("2.Sub");
-            Console.WriteLine("3.Pro");
-            Console.WriteLine("4.Quo");
-            string ch = Console.ReadLine();
-            switch (ch)
-            {
-                case "1":
-                    Console.WriteLine($"Addition:{num1 + num2}");
-                    break;
-                case "2":
-                    Console.WriteLine($"Subtraction:{num1 - num2}");
-                    break;
-                case "3":
-                    Console.WriteLine($"Product:{num1 * num2}");
-                    break;
-                case "4":
-                    Console.WriteLine($"Quotient:{num1 / num2}");
-                    break;
-                case "5":
-                    Console.WriteLine($"Remainder:{num1 % num2}");
-                    break;
-                default:
-                    Console.WriteLine("Invalid choice");
-                    break;
-            }
-        }
-        static void DisplayName()
-        {
-            Console.WriteLine("my name is shruti");
-
-        }
-        static void DisplayNametenTimes()
-        {
-            for (int i = 0; i < 10; i++)
-            {
-                Console.WriteLine("My name is shruti");
-            }
-        }
-        static void EvenNos()
-        {
-            Console.WriteLine("enter upper limit");
-            int limit = Convert.ToInt32(Console.ReadLine());
-            for (int i = 0; i <= limit; i += 2)
-                Console.WriteLine($"{i}");
-            Console.WriteLine("while loops");
-            int j = 0;
-            while (j < limit)
-            {
-                Console.WriteLine($"{j}");
-                j += 2;
-            }
-            Console.WriteLine("do while");
-            int k = 0;
-            do
-            {
-                Console.WriteLine($"{k}");
-                k += 2;
-            } while (k <= limit);
-        }
-        static void OddNos()
-        {
-            Console.WriteLine("enter upper limit");
-            int limit = Convert.ToInt32(Console.ReadLine());
-            for (int i = 1; i <= limit; i += 2)
-                Console.WriteLine($"{i}");
-            Console.WriteLine("while loops");
-            int j = 1;
-            while (j <=limit)
-            {
-                Console.WriteLine($"{j}");
-                j += 2;
-            }
-            Console.WriteLine("do while");
-            int k = 1;
-            do
-            {
-                Console.WriteLine($"{k}");
-                k += 2;
-            } while (k <= limit);
-        }
-        static void DisplayGap()
-        {
-            for (int i = 100; i >= 5; i -= 3)
-            {
-                Console.WriteLine($"{i}");
-            }
-        }
-        static void DisplayOneLine()
-        {
-            int n1 = 4;
-            int n2 = 5;
-            Console.Write(n1);
-            Console.Write(n2);
-        }
-        static void DisplaySeparateLine()
-        {
-            int n1 = 4;
-            int n2 = 5;
-            Console.WriteLine(n1);
-            Console.WriteLine(n2);
-        }
-
     }
 }
+        
+           
+       
