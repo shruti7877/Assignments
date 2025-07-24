@@ -10,73 +10,92 @@ namespace Assignment10
     {
         public static int CharCount(this string s)
         {
-            return (s ?? "***").Length;
+            if (s == null) s = "***";
+            return s.Length;
         }
 
         public static bool IsPalindrome(this string s)
         {
-            s = (s ?? "***").ToLower().Replace(" ", "");
-            return s == new string(s.Reverse().ToArray());
+            if (s == null) s = "***";
+            s = s.ToLower().Replace(" ", ""); 
+            string reversed = new string(s.Reverse().ToArray()); 
+            return s == reversed; // 
         }
         public static string ReverseSentence(this string s)
         {
-            return new string((s ?? "***").Reverse().ToArray());
+            if (s == null) s = "***";
+            return new string(s.Reverse().ToArray());
         }
 
         public static void CountDetails(this string s)
         {
+            if (s == null) s = "***";
+
             int vowels = 0, consonants = 0, digits = 0, special = 0;
-            s = s ?? "***";
+
             foreach (char c in s)
             {
-                if (char.IsDigit(c))
-                    digits++;
-                else if ("aeiouAEIOU".Contains(c))
-                    vowels++;
-                else if (char.IsLetter(c))
-                    consonants++;
-                else
-                    special++;
+                if (char.IsDigit(c)) digits++;
+                else if ("aeiouAEIOU".Contains(c)) vowels++;
+                else if (char.IsLetter(c)) consonants++;
+                else special++;
             }
 
             Console.WriteLine("Vowels: " + vowels + ", Consonants: " + consonants + ", Digits: " + digits + ", Specials: " + special);
         }
         public static string ToProperCase(this string s)
         {
-            s = s ?? "***";
+            if (s == null) s = "***";
 
-            return string.Join(" ",
-                s.Split(' ')
-                .Where(w => w != "")
-                .Select(w => char.ToUpper(w[0]) + w.Substring(1).ToLower())
-            );
+            var words = s.Split(' ');
+            string result = "";
+
+            foreach (string word in words)
+            {
+                if (word != "")
+                {
+                    result += char.ToUpper(word[0]) + word.Substring(1).ToLower() + " ";
+                }
+            }
+            return result.Trim(); 
         }
 
         public static string Combine(this string s1, string s2)
         {
-            return (s1 ?? "***") + " " + (s2 ?? "***");
+            if (s1 == null) s1 = "***";
+            if (s2 == null) s2 = "***";
+
+            return s1 + " " + s2;
         }
         public static string RemoveExtraSpaces(this string s)
         {
-            return string.Join(" ", (s ?? "***")
-                .Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries));
-        }
+            if (s == null) s = "***";
 
+            string[] words = s.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries);
+            return string.Join(" ", words);
+        }
         public static int WordCount(this string s)
         {
-            return (s ?? "***").Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Length;
+            if (s == null) s = "***";
+
+            return s.Split(new[] { ' ' }, StringSplitOptions.RemoveEmptyEntries).Length;
         }
 
         public static bool ContainsSubstring(this string s, string sub)
         {
-            return (s ?? "***").Contains(sub ?? "***");
+            if (s == null) s = "***";
+            if (sub == null) sub = "***";
+
+            return s.Contains(sub);
         }
+
         public static int CountOccurrences(this string s, string sub)
         {
-            s = s ?? "***";
-            sub = sub ?? "***";
+            if (s == null) s = "***";
+            if (sub == null) sub = "***";
 
-            int count = 0, i = 0;
+            int count = 0;
+            int i = 0;
 
             while ((i = s.IndexOf(sub, i)) != -1)
             {
